@@ -1,4 +1,4 @@
-package martonveto.com.mobsoft.ui.main;
+package martonveto.com.mobsoft.ui.home;
 
 import martonveto.com.mobsoft.ui.Presenter;
 
@@ -17,4 +17,11 @@ public class MainPresenter extends Presenter<MainScreen> {
         super.detachScreen();
     }
 
+    public void showDetails() {
+        screen.startDetailIntent();
+    }
+
+    public void showAlbumList() {
+        screen.startAlbumListIntent();
+    }
 }

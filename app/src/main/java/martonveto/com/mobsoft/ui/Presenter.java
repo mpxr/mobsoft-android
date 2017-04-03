@@ -2,6 +2,7 @@ package martonveto.com.mobsoft.ui;
 
 
 public abstract class Presenter<S> {
+
     protected S screen;
 
     public void attachScreen(S screen) {
@@ -11,4 +12,5 @@ public abstract class Presenter<S> {
     public void detachScreen() {
         this.screen = null;
     }
+
 }
