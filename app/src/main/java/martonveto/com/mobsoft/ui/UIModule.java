@@ -2,10 +2,15 @@ package martonveto.com.mobsoft.ui;
 
 
 import android.content.Context;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.greenrobot.event.EventBus;
 import martonveto.com.mobsoft.ui.album.list.AlbumListPresenter;
 import martonveto.com.mobsoft.ui.detail.DetailPresenter;
 import martonveto.com.mobsoft.ui.home.MainPresenter;
@@ -32,14 +37,27 @@ public class UIModule {
 
     @Provides
     @Singleton
-    public DetailPresenter provideDetailPresenter(){
+    public DetailPresenter provideDetailPresenter() {
         return new DetailPresenter();
     }
 
     @Provides
     @Singleton
-    public AlbumListPresenter provideAlbumListPresenter(){
+    public AlbumListPresenter provideAlbumListPresenter() {
         return new AlbumListPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+
+    @Provides
+    @Singleton
+    public Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 
 }
