@@ -10,14 +10,14 @@ basePath: /v1
 produces:
   - application/json
 paths:
-  '/artists/{albumId}/albums':
+  '/artists/{artistId}/albums':
     get:
       description: |
         [Get an Artist's Albums](https://developer.spotify.com/web-api/get-artists-albums/)
       parameters:
         - description: The Spotify ID for the artist
           in: path
-          name: albumId
+          name: artistId
           required: true
           type: string
         - default: 20
@@ -51,14 +51,14 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/album-simple-page'
-  '/albums/{albumId}':
+  '/albums/{artistId}':
     get:
       description: |
         [Get an Album](https://developer.spotify.com/web-api/get-album/)
       parameters:
         - description: The Spotify ID for the album
           in: path
-          name: albumId
+          name: artistId
           required: true
           type: string
         - description: The market (an ISO 3166-1 alpha-2 country code)
@@ -158,7 +158,7 @@ definitions:
       href:
         description: A link to the Web API endpoint providing full details of the album.
         type: string
-      albumId:
+      artistId:
         description: The Spotify ID for the album.
         type: string
       images:
@@ -206,7 +206,7 @@ definitions:
       href:
         description: A link to the Web API endpoint providing full details of the album.
         type: string
-      albumId:
+      artistId:
         description: The Spotify ID for the album.
         type: string
       images:
@@ -265,7 +265,7 @@ definitions:
       href:
         description: A link to the Web API endpoint providing full details of the artist.
         type: string
-      albumId:
+      artistId:
         description: The Spotify ID for the artist.
         type: string
       images:
@@ -296,7 +296,7 @@ definitions:
       href:
         description: A link to the Web API endpoint providing full details of the artist.
         type: string
-      albumId:
+      artistId:
         description: The Spotify ID for the artist.
         type: string
       name:
@@ -408,7 +408,7 @@ definitions:
       href:
         description: A link to the Web API endpoint providing full details of the track.
         type: string
-      albumId:
+      artistId:
         description: The Spotify ID for the track.
         type: string
       is_playable:
@@ -426,7 +426,7 @@ definitions:
           href:
             description: A link to the Web API endpoint providing full details of the track.
             type: string
-          albumId:
+          artistId:
             description: The Spotify ID for the track.
             type: string
           type:

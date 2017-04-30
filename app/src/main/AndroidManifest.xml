@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="martonveto.com.mobsoft">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MobSoftApplication"
         android:allowBackup="true"
@@ -9,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme">
         <activity android:name=".ui.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +24,17 @@
         </activity>
 
         <activity android:name=".ui.album.list.AlbumListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.MainActivity" />
         </activity>
+
+
+        <meta-data android:name="DATABASE" android:value="band_info.db" />
+        <meta-data android:name="VERSION" android:value="2" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="martonveto.com.mobsoft" />
+
     </application>
 
 </manifest>

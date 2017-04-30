@@ -53,7 +53,6 @@ public class UIModule {
         return EventBus.getDefault();
     }
 
-
     @Provides
     @Singleton
     public Executor provideExecutor() {

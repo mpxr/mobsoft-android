@@ -1,40 +1,25 @@
 package martonveto.com.mobsoft.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.dsl.Table;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@Table
-public class Artist {
 
-    @SerializedName("db_id")
-    private transient Long id = null;
+public class ArtistSimple {
 
     @SerializedName("external_urls")
     private Map<String, String> externalUrls = new HashMap<String, String>();
 
-    @SerializedName("genres")
-    private List<String> genres = new ArrayList<String>();
-
     @SerializedName("href")
     private String href = null;
 
-    @SerializedName("id")
-    private String artistId = null;
-
-    @SerializedName("images")
-    private List<Image> images = new ArrayList<Image>();
+    @SerializedName("albumId")
+    private String albumId = null;
 
     @SerializedName("name")
     private String name = null;
-
-    @SerializedName("popularity")
-    private Integer popularity = null;
 
     @SerializedName("type")
     private String type = null;
@@ -42,17 +27,6 @@ public class Artist {
     @SerializedName("uri")
     private String uri = null;
 
-
-    public Artist() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     /**
      * Known external URLs for this artist.
@@ -63,18 +37,6 @@ public class Artist {
 
     public void setExternalUrls(Map<String, String> externalUrls) {
         this.externalUrls = externalUrls;
-    }
-
-
-    /**
-     * A list of the genres the artist is associated with. For example: 'Prog Rock', 'Post-Grunge'. (If not yet classified, the array is empty.)
-     **/
-    public List<String> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<String> genres) {
-        this.genres = genres;
     }
 
 
@@ -93,24 +55,12 @@ public class Artist {
     /**
      * The Spotify ID for the artist.
      **/
-    public String getArtistId() {
-        return artistId;
+    public String getAlbumId() {
+        return albumId;
     }
 
-    public void setArtistId(String artistId) {
-        this.artistId = artistId;
-    }
-
-
-    /**
-     * Images of the artist in various sizes, widest first.
-     **/
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setAlbumId(String albumId) {
+        this.albumId = albumId;
     }
 
 
@@ -123,18 +73,6 @@ public class Artist {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-    /**
-     * The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist's popularity is calculated from the popularity of all the artist's tracks.
-     **/
-    public Integer getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(Integer popularity) {
-        this.popularity = popularity;
     }
 
 
@@ -170,35 +108,29 @@ public class Artist {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Artist artist = (Artist) o;
-        return Objects.equals(externalUrls, artist.externalUrls) &&
-                Objects.equals(genres, artist.genres) &&
-                Objects.equals(href, artist.href) &&
-                Objects.equals(artistId, artist.artistId) &&
-                Objects.equals(images, artist.images) &&
-                Objects.equals(name, artist.name) &&
-                Objects.equals(popularity, artist.popularity) &&
-                Objects.equals(type, artist.type) &&
-                Objects.equals(uri, artist.uri);
+        ArtistSimple artistSimple = (ArtistSimple) o;
+        return Objects.equals(externalUrls, artistSimple.externalUrls) &&
+                Objects.equals(href, artistSimple.href) &&
+                Objects.equals(albumId, artistSimple.albumId) &&
+                Objects.equals(name, artistSimple.name) &&
+                Objects.equals(type, artistSimple.type) &&
+                Objects.equals(uri, artistSimple.uri);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(externalUrls, genres, href, artistId, images, name, popularity, type, uri);
+        return Objects.hash(externalUrls, href, albumId, name, type, uri);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class OldArtist {\n");
+        sb.append("class ArtistSimple {\n");
 
         sb.append("    externalUrls: ").append(toIndentedString(externalUrls)).append("\n");
-        sb.append("    genres: ").append(toIndentedString(genres)).append("\n");
         sb.append("    href: ").append(toIndentedString(href)).append("\n");
-        sb.append("    artistId: ").append(toIndentedString(artistId)).append("\n");
-        sb.append("    images: ").append(toIndentedString(images)).append("\n");
+        sb.append("    albumId: ").append(toIndentedString(albumId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    popularity: ").append(toIndentedString(popularity)).append("\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
         sb.append("}");

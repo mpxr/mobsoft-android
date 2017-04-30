@@ -1,15 +1,14 @@
-package martonveto.com.mobsoft.interactor.albums.events;
+package martonveto.com.mobsoft.interactor.search.events;
 
-import martonveto.com.mobsoft.model.Album;
+import martonveto.com.mobsoft.model.Search;
 
-public class RemoveAlbumEvent {
+public class SearchEvent {
 
     private int code;
-    private Album album;
+    private Search search;
     private Throwable throwable;
 
-
-    public RemoveAlbumEvent() {
+    public SearchEvent() {
     }
 
     public int getCode() {
@@ -20,12 +19,12 @@ public class RemoveAlbumEvent {
         this.code = code;
     }
 
-    public Album getAlbum() {
-        return album;
+    public Search getSearch() {
+        return search;
     }
 
-    public void setAlbum(Album album) {
-        this.album = album;
+    public void setSearch(Search search) {
+        this.search = search;
     }
 
     public Throwable getThrowable() {

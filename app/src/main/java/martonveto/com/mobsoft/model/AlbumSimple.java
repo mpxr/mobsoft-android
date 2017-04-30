@@ -1,7 +1,6 @@
 package martonveto.com.mobsoft.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.dsl.Table;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,32 +8,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@Table
-public class Artist {
 
-    @SerializedName("db_id")
-    private transient Long id = null;
+public class AlbumSimple {
+
+    @SerializedName("album_type")
+    private String albumType = null;
+
+    @SerializedName("available_markets")
+    private List<String> availableMarkets = new ArrayList<String>();
 
     @SerializedName("external_urls")
     private Map<String, String> externalUrls = new HashMap<String, String>();
-
-    @SerializedName("genres")
-    private List<String> genres = new ArrayList<String>();
 
     @SerializedName("href")
     private String href = null;
 
     @SerializedName("id")
-    private String artistId = null;
+    private String albumId = null;
 
     @SerializedName("images")
     private List<Image> images = new ArrayList<Image>();
 
     @SerializedName("name")
     private String name = null;
-
-    @SerializedName("popularity")
-    private Integer popularity = null;
 
     @SerializedName("type")
     private String type = null;
@@ -43,19 +39,32 @@ public class Artist {
     private String uri = null;
 
 
-    public Artist() {
+    /**
+     * The type of the album: one of 'album', 'single', or 'compilation'.
+     **/
+    public String getAlbumType() {
+        return albumType;
     }
 
-    public Long getId() {
-        return id;
+    public void setAlbumType(String albumType) {
+        this.albumType = albumType;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     /**
-     * Known external URLs for this artist.
+     * The markets in which the album is available: ISO 3166-1 alpha-2 country codes. Note that an album is considered available in a market when at least 1 of its tracks is available in that market.
+     **/
+    public List<String> getAvailableMarkets() {
+        return availableMarkets;
+    }
+
+    public void setAvailableMarkets(List<String> availableMarkets) {
+        this.availableMarkets = availableMarkets;
+    }
+
+
+    /**
+     * Known external URLs for this album.
      **/
     public Map<String, String> getExternalUrls() {
         return externalUrls;
@@ -67,19 +76,7 @@ public class Artist {
 
 
     /**
-     * A list of the genres the artist is associated with. For example: 'Prog Rock', 'Post-Grunge'. (If not yet classified, the array is empty.)
-     **/
-    public List<String> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<String> genres) {
-        this.genres = genres;
-    }
-
-
-    /**
-     * A link to the Web API endpoint providing full details of the artist.
+     * A link to the Web API endpoint providing full details of the album.
      **/
     public String getHref() {
         return href;
@@ -91,19 +88,19 @@ public class Artist {
 
 
     /**
-     * The Spotify ID for the artist.
+     * The Spotify ID for the album.
      **/
-    public String getArtistId() {
-        return artistId;
+    public String getAlbumId() {
+        return albumId;
     }
 
-    public void setArtistId(String artistId) {
-        this.artistId = artistId;
+    public void setAlbumId(String albumId) {
+        this.albumId = albumId;
     }
 
 
     /**
-     * Images of the artist in various sizes, widest first.
+     * The cover art for the album in various sizes, widest first.
      **/
     public List<Image> getImages() {
         return images;
@@ -115,7 +112,7 @@ public class Artist {
 
 
     /**
-     * The name of the artist.
+     * The name of the album.
      **/
     public String getName() {
         return name;
@@ -127,19 +124,7 @@ public class Artist {
 
 
     /**
-     * The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist's popularity is calculated from the popularity of all the artist's tracks.
-     **/
-    public Integer getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(Integer popularity) {
-        this.popularity = popularity;
-    }
-
-
-    /**
-     * The object type: 'artist'
+     * The object type: 'album'.
      **/
     public String getType() {
         return type;
@@ -151,7 +136,7 @@ public class Artist {
 
 
     /**
-     * The Spotify URI for the artist.
+     * The Spotify URI for the album.
      **/
     public String getUri() {
         return uri;
@@ -170,35 +155,35 @@ public class Artist {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Artist artist = (Artist) o;
-        return Objects.equals(externalUrls, artist.externalUrls) &&
-                Objects.equals(genres, artist.genres) &&
-                Objects.equals(href, artist.href) &&
-                Objects.equals(artistId, artist.artistId) &&
-                Objects.equals(images, artist.images) &&
-                Objects.equals(name, artist.name) &&
-                Objects.equals(popularity, artist.popularity) &&
-                Objects.equals(type, artist.type) &&
-                Objects.equals(uri, artist.uri);
+        AlbumSimple albumSimple = (AlbumSimple) o;
+        return Objects.equals(albumType, albumSimple.albumType) &&
+                Objects.equals(availableMarkets, albumSimple.availableMarkets) &&
+                Objects.equals(externalUrls, albumSimple.externalUrls) &&
+                Objects.equals(href, albumSimple.href) &&
+                Objects.equals(albumId, albumSimple.albumId) &&
+                Objects.equals(images, albumSimple.images) &&
+                Objects.equals(name, albumSimple.name) &&
+                Objects.equals(type, albumSimple.type) &&
+                Objects.equals(uri, albumSimple.uri);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(externalUrls, genres, href, artistId, images, name, popularity, type, uri);
+        return Objects.hash(albumType, availableMarkets, externalUrls, href, albumId, images, name, type, uri);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class OldArtist {\n");
+        sb.append("class AlbumSimple {\n");
 
+        sb.append("    albumType: ").append(toIndentedString(albumType)).append("\n");
+        sb.append("    availableMarkets: ").append(toIndentedString(availableMarkets)).append("\n");
         sb.append("    externalUrls: ").append(toIndentedString(externalUrls)).append("\n");
-        sb.append("    genres: ").append(toIndentedString(genres)).append("\n");
         sb.append("    href: ").append(toIndentedString(href)).append("\n");
-        sb.append("    artistId: ").append(toIndentedString(artistId)).append("\n");
+        sb.append("    albumId: ").append(toIndentedString(albumId)).append("\n");
         sb.append("    images: ").append(toIndentedString(images)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    popularity: ").append(toIndentedString(popularity)).append("\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
         sb.append("}");

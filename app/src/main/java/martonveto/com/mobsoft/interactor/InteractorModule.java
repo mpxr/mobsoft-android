@@ -3,8 +3,8 @@ package martonveto.com.mobsoft.interactor;
 import dagger.Module;
 import dagger.Provides;
 import martonveto.com.mobsoft.interactor.albums.AlbumsInteractor;
-import martonveto.com.mobsoft.interactor.artist.ArtistInteractor;
 import martonveto.com.mobsoft.interactor.details.DetailsInteractor;
+import martonveto.com.mobsoft.interactor.search.SearchInteractor;
 
 @Module
 public class InteractorModule {
@@ -20,8 +20,8 @@ public class InteractorModule {
     }
 
     @Provides
-    public ArtistInteractor provideArtistInterceptor() {
-        return new ArtistInteractor();
+    public SearchInteractor provideSearchInteractor(){
+        return new SearchInteractor();
     }
 
 }

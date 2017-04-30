@@ -2,9 +2,8 @@ package martonveto.com.mobsoft.repository;
 
 import android.content.Context;
 
-import java.util.List;
+import java.util.Iterator;
 
-import martonveto.com.mobsoft.model.Album;
 import martonveto.com.mobsoft.model.Artist;
 
 public interface Repository {
@@ -13,22 +12,10 @@ public interface Repository {
 
     void close();
 
-    List<Artist> getAllArtist();
+    void saveAlbum(martonveto.com.mobsoft.model.Album currentAlbum);
 
-    List<Album> getAlbumsOfArtist(Artist artist);
-
-    Artist findArtistByName(String artistName);
-
-    Album findAlbumByName(String albumName);
-
-    boolean isArtistInDb(Artist artist);
-
-    boolean isAlbumInDb(Album album);
-
-    void saveAlbum(Album album);
+    Iterator<martonveto.com.mobsoft.model.Album> getAllAlbums();
 
     void saveArtist(Artist artist);
-
-    void removeAlbum(Album album);
 
 }

@@ -1,15 +1,14 @@
 package martonveto.com.mobsoft.interactor.albums.events;
 
-import martonveto.com.mobsoft.model.Album;
+import martonveto.com.mobsoft.model.AlbumSimplePage;
 
-public class SaveAlbumEvent {
+public class DownloadedAlbumsEvent {
 
     private int code;
-    private Album album;
+    private AlbumSimplePage albums;
     private Throwable throwable;
 
-
-    public SaveAlbumEvent() {
+    public DownloadedAlbumsEvent() {
     }
 
     public int getCode() {
@@ -20,12 +19,12 @@ public class SaveAlbumEvent {
         this.code = code;
     }
 
-    public Album getAlbum() {
-        return album;
+    public AlbumSimplePage getAlbums() {
+        return albums;
     }
 
-    public void setAlbum(Album album) {
-        this.album = album;
+    public void setAlbums(AlbumSimplePage albums) {
+        this.albums = albums;
     }
 
     public Throwable getThrowable() {
@@ -35,6 +34,5 @@ public class SaveAlbumEvent {
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
     }
-
 
 }
