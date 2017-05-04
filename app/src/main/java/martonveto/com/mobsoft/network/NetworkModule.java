@@ -1,7 +1,5 @@
 package martonveto.com.mobsoft.network;
 
-import android.content.Context;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -13,12 +11,6 @@ import retrofit2.Retrofit;
 
 @Module
 public class NetworkModule {
-
-    private Context context;
-
-    public NetworkModule(Context context) {
-        this.context = context;
-    }
 
     @Provides
     @Singleton
