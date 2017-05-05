@@ -3,6 +3,7 @@
     package="martonveto.com.mobsoft">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:name=".MobSoftApplication"
@@ -35,6 +36,9 @@
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="martonveto.com.mobsoft" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9f1a66b17ff5d1f7eee464b383346d41c707a0a8" />
     </application>
 
 </manifest>

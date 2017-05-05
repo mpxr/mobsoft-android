@@ -18,9 +18,9 @@
 
         <AutoCompleteTextView
             android:id="@+id/searchTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="9"
+            android:layout_weight="5"
             android:text="Artist" />
 
         <Button
@@ -29,9 +29,17 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0dp"
             android:layout_marginTop="8dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:onClick="buttonClicked"
             android:text="Search" />
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Crash!"
+            android:layout_marginTop="8dp"
+            android:layout_weight="3"
+            android:onClick="forceCrash" />
     </LinearLayout>
 
     <ListView

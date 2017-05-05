@@ -2,7 +2,6 @@ package martonveto.com.mobsoft.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +25,6 @@ import martonveto.com.mobsoft.model.Album;
 import martonveto.com.mobsoft.model.Artist;
 import martonveto.com.mobsoft.model.SearchArtists;
 import martonveto.com.mobsoft.ui.album.list.AlbumListActivity;
-import martonveto.com.mobsoft.ui.detail.DetailActivity;
 import martonveto.com.mobsoft.utils.IntentConstants;
 
 public class MainActivity extends AppCompatActivity implements MainScreen {
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     private List<Artist> artists;
     private List<Album> savedAlbums;
     private ListView savedAlbumsListView;
+
+    private Tracker tracker;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
 
         textView.setOnItemClickListener(autocompleteSelected());
         textView.setOnClickListener(autocompleteClicked());
+
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        tracker = application.getDefaultTracker();
     }
 
     private AdapterView.OnItemClickListener autocompleteSelected() {
@@ -72,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     protected void onStart() {
         super.onStart();
+        tracker.setScreenName("Image~MainActivity");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
         mainPresenter.attachScreen(this);
         mainPresenter.getAllAlbums();
     }
@@ -124,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         return albumNames;
     }
 
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
 
     public void buttonClicked(View view) {
         mainPresenter.search(textView.getText().toString());
@@ -133,9 +144,7 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         return new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-//                intent.putExtra(IntentConstants.ALBUM_ID, savedAlbums.get(position).getAlbumId());
-//                startActivity(intent);
+
             }
         };
     }
